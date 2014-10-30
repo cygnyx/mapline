@@ -3,19 +3,16 @@
 map a stream line by line
 
 This module reads a stream line by line, mapping a function on them.
+function is called with null on the last iteration.
 
 # example
 
 ``` js
-var mapline = require('mapline');
-mapline(function(line){
-  console.log('_'+line);
-});
-
+require('mapline')(function(line){if(line) console.log('_'+line);});
 ```
 
 ```
-$ (echo a; echo b) | node example.js
+$ (echo a; echo b) | node -e "require('mapline')(function(line){if (line)console.log('_'+line);})"
 _a
 _b
 ```
