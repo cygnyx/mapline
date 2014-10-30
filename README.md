@@ -4,9 +4,7 @@ map a stream line by line
 
 This module reads a stream line by line, mapping a function on them.
 
-#[![browser support](https://ci.testling.com/cygnyx/mapline.png)](http://ci.testling.com/cygnyx/mapline)
-
-#[![build status](https://secure.travis-ci.org/cygnyx/mapline.png)](http://travis-ci.org/cygnyx/mapline)
+[![browser support](https://ci.testling.com/cygnyx/mapline.png)](http://ci.testling.com/cygnyx/mapline)
 
 # example
 
