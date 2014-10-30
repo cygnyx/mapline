@@ -4,8 +4,6 @@ map a stream line by line
 
 This module reads a stream line by line, mapping a function on them.
 
-[![browser support](https://ci.testling.com/cygnyx/mapline.png)](http://ci.testling.com/cygnyx/mapline)
-
 # example
 
 ``` js

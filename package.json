@@ -5,8 +5,6 @@
   "main": "index.js",
   "devDependencies": {
       "tape": "~2.4.0",
-      "testling": "~1.7.1",
-      "browserify": "~6.2.0"
   },
     "testling": {
 	"files": "test/*.js",
