@@ -1,3 +1,5 @@
+var EOL = require('os').EOL;
+
 module.exports = function mapline(rs, fnc) {
     if (typeof(rs) == "function") {
 	fnc = rs;
@@ -9,11 +11,9 @@ module.exports = function mapline(rs, fnc) {
     
     rs.on('data', function(chunk) {
 
-	lines = (last+chunk).split("\n");
-
-	for (var i = 0; i < lines.length - 1; i++)
-	    fnc(lines[i]);
-	last = lines[lines.length - 1];
+	lines = (last+chunk).split(EOL);
+	lines.slice(0, -1).forEach(fnc);
+	last = lines.slice(-1);
     });
 
     rs.on('end', function() {

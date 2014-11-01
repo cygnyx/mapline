@@ -6,8 +6,10 @@ var stream = require('stream');
 var inp = new stream.Readable();
 var out = new stream.Writable();
 
-var inpstr = 'a\nb\n';
-var outstr = '_a\n_b\n';
+var EOL = require('os').EOL;
+
+var inpstr = 'a' + EOL + 'b' + EOL;
+var outstr = '_a' + EOL + '_b' + EOL;
 
 stream.Readable.call(inp);
 
@@ -30,7 +32,7 @@ out._write = function(chunk, encoding, callback) {
 
 mapline(inp, function(line){
     if (line != null)
-	out.write('_'+line+'\n');
+	out.write('_'+line+EOL);
     else
 	out.end();
 })

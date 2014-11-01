@@ -1,6 +1,6 @@
 {
   "name": "mapline",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "map a stream line by line",
   "main": "index.js",
   "devDependencies": {
@@ -28,7 +28,7 @@
     "url": "https://github.com/cygnyx/mapline/issues"
   },
 
-  "_id": "mapline@0.1.1",
+  "_id": "mapline@0.1.2",
   "_from": "mapline@*",
   "_npmVersion": "2.1.2",
   "_npmUser": {
