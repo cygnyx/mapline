@@ -10,7 +10,6 @@ module.exports = function mapline(rs, fnc) {
     var lines;
     
     rs.on('data', function(chunk) {
-
 	lines = (last+chunk).split(EOL);
 	lines.slice(0, -1).forEach(fnc);
 	last = lines.slice(-1);
