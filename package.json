@@ -1,45 +1,16 @@
 {
-  "name": "mapline",
-  "version": "0.1.2",
-  "description": "map a stream line by line",
-  "main": "index.js",
-  "devDependencies": {
-      "tape": "~2.4.0"
-  },
+    "name": "mapline",
+    "version": "0.1.2",
+    "description": "map a stream line by line",
+    "repository": "cygnyx/mapline",
+    "devDependencies": {
+	"tape": "~2.4.0"
+    },
     "scripts": {
-	"test": "tape test/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/cygnyx/mapline.git"
-  },
-  "homepage": "https://github.com/cygnyx/mapline",
-  "keywords": [
-    "mapline"
-  ],
-  "author": {
-    "name": "Eric Olson",
-    "email": "services@cygnyx.com",
-    "url": "http://cygnyx.com"
-  },
-  "license": "MIT",
-
-  "bugs": {
-    "url": "https://github.com/cygnyx/mapline/issues"
-  },
-
-  "_id": "mapline@0.1.2",
-  "_from": "mapline@*",
-  "_npmVersion": "2.1.2",
-  "_npmUser": {
-    "name": "cygnyx",
-    "email": "services@cygnyx.com"
-  },
-
-  "maintainers": [
-    {
-      "name": "cygnyx",
-      "email": "services@cygnyx.com"
-    }
-  ]
+	"test": "tape test.js"
+    },
+    "keywords": [
+	"mapline",
+	"stream"
+    ]
 }
