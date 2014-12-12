@@ -1,6 +1,6 @@
 var test = require('tape');
 
-var mapline = require('..');
+var mapline = require('mapline');
 var stream = require('stream');
 
 var inp = new stream.Readable();
@@ -26,16 +26,11 @@ stream.Writable.call(out);
 var outbuf = "";
 
 out._write = function(chunk, encoding, callback) {
-    outbuf = outbuf + chunk.toString();
+    outbuf = outbuf + '_' + chunk.toString() + '\n';
     callback();
 };
 
-mapline(inp, function(line){
-    if (line != null)
-	out.write('_'+line+EOL);
-    else
-	out.end();
-})
+inp.pipe(mapline).pipe(out);
 
 test('testnewline', function (t) {
     t.plan(1);

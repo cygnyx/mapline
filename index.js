@@ -1,24 +1,39 @@
-var EOL = require('os').EOL;
 
-module.exports = function mapline(rs, fnc) {
-    if (typeof(rs) == "function") {
-	fnc = rs;
-	rs = process.stdin;
+module.exports = function(opts, fn) {
+
+    if (typeof opts == "function") {
+	fn = opts;
+	opts = {};
+    } else if (!opts) opts = {}
+
+    var m = new require('stream').Transform()
+    m.EOL = opts.EOL ? opts.EOL : require('os').EOL;
+    m.prior = ""
+
+    var post = fn || opts.fn || function(e) {return e+m.EOL}
+
+    m.emitter = function(m) {
+	return function(e) {
+	    m.push(post(e))
+	}
+    }(m);
+
+    m._transform = function(chunk, encoding, done) {
+	var lines = (this.prior == "") ?
+	    chunk.toString().split(this.EOL) :
+	    (this.prior + chunk.toString()).split(this.EOL)
+	this.prior = lines.pop();
+	lines.forEach(this.emitter)
+	done()
     }
-    
-    var last = "";
-    var lines;
-    
-    rs.on('data', function(chunk) {
-	lines = (last+chunk).split(EOL);
-	lines.slice(0, -1).forEach(fnc);
-	last = lines.slice(-1);
-    });
 
-    rs.on('end', function() {
-	if (last != "")
-	    fnc(last);
-	fnc(null);
-    });
+    m._flush = function(done) {
+	if (this.prior != "") {
+	    this.emitter(this.prior)
+	    this.prior = ""
+	}
+	done()
+    }
 
-};
+    return m;
+}
